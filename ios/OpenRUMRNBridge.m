@@ -10,7 +10,9 @@ RCT_EXPORT_MODULE(openrumRNBridge);
 
 RCT_EXPORT_METHOD(startWithAppID:(NSString *)appID)
 {
-    [OpenRUM startWithAppID:appID];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [OpenRUM startWithAppID:appID];
+    });
 }
 
 RCT_EXPORT_METHOD(setConfigAddress:(NSString *)configAddress)
